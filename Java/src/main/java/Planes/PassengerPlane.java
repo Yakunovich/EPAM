@@ -21,7 +21,7 @@ public class PassengerPlane extends Plane{
         if (!(plane instanceof PassengerPlane)) return false;
         if (!super.equals(plane)) return false;
         PassengerPlane currentPlane = (PassengerPlane) plane;
-        return passengersCapacity == currentPlane.passengersCapacity;
+        return passengersCapacity == currentPlane.getPassengersCapacity();
     }
 
     @Override

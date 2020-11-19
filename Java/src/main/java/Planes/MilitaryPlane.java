@@ -23,7 +23,7 @@ public class MilitaryPlane extends Plane{
         if (!(plane instanceof MilitaryPlane)) return false;
         if (!super.equals(plane)) return false;
         MilitaryPlane currentPlane = (MilitaryPlane) plane;
-        return militaryType == currentPlane.militaryType;
+        return militaryType == currentPlane.getMilitaryType();
     }
     
     @Override

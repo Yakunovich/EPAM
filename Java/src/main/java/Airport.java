@@ -22,9 +22,8 @@ public class Airport {
     }
 
     public List<PassengerPlane> getPassengerPlanes() {
-        List<? extends Plane> arrayOfAllPlanes = this.allPlanes;
         List<PassengerPlane> arrayOfPassangerPlanes = new ArrayList<>();
-        for (Plane currentPlane : arrayOfAllPlanes) {
+        for (Plane currentPlane : this.allPlanes) {
             if (currentPlane instanceof PassengerPlane) {
             arrayOfPassangerPlanes.add((PassengerPlane) currentPlane);
             }
@@ -33,8 +32,7 @@ public class Airport {
     }
 
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
-        List<PassengerPlane> passengerPlanes = getPassengerPlanes();
-        PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
+        PassengerPlane planeWithMaxCapacity = getPassengerPlanes().get(0);
         for (int i = 0; i < passengerPlanes.size(); i++) {
             if (passengerPlanes.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
                 planeWithMaxCapacity = passengerPlanes.get(i);
@@ -65,8 +63,7 @@ public class Airport {
 
     public List<MilitaryPlane> getTransportMilitaryPlanes() {
         List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
-        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        for (int i = 0; i < militaryPlanes.size(); i++) {
+        for (int i = 0; i < getMilitaryPlanes().size(); i++) {
             MilitaryPlane plane = militaryPlanes.get(i);
             if (plane.getMilitaryType() == MilitaryType.TRANSPORT) {
                 transportMilitaryPlanes.add(plane);
@@ -77,8 +74,7 @@ public class Airport {
 
     public List<MilitaryPlane> getBomberMilitaryPlanes() {
         List<MilitaryPlane> bomberMilitaryPlanes = new ArrayList<>();
-        List<MilitaryPlane> militaryPlanes = getMilitaryPlanes();
-        for (int i = 0; i < militaryPlanes.size(); i++) {
+        for (int i = 0; i < getMilitaryPlanes().size(); i++) {
             MilitaryPlane plane = militaryPlanes.get(i);
             if (plane.getMilitaryType() == MilitaryType.BOMBER) {
                 bomberMilitaryPlanes.add(plane);
@@ -90,7 +86,7 @@ public class Airport {
     public Airport sortByMaxDistance() {
         Collections.sort(allPlanes, new Comparator<Plane>() {
             public int compare(Plane firstPlane, Plane secondPlane) {
-                return firstPlane.GetMaxFlightDistance() - secondPlane.GetMaxFlightDistance();
+                return firstPlane.getMaxFlightDistance() - secondPlane.getMaxFlightDistance();
             }
         });
         return this;
